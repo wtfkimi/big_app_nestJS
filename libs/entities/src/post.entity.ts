@@ -17,5 +17,7 @@ export class PostEntity {
     createdAt: string;
     @Column({name: 'updated_at'})
     updatedAt: string;
+    @Column({name: 'banned'})
+    banned: string
 
 }
