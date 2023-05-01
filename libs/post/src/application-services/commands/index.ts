@@ -9,11 +9,15 @@ import {
 import {
   DeletePostCommandHandler
 } from "./delete-post/delete-post.command-handler";
+import {
+  SetPublishedCommandHandler
+} from "./set-published/set-published.command-handler";
 
 
 
 export const POST_COMMANDS_HANDLERS: Type<ICommandHandler>[] = [
   CreatePostCommandHandler,
   UpdatePostCommandHandler,
-  DeletePostCommandHandler
+  DeletePostCommandHandler,
+  SetPublishedCommandHandler
 ];
