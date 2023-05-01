@@ -9,19 +9,26 @@ import {DomainError} from "@lib/errors";
 export class PostAggregate extends PostServices implements IPost {
     @IsUUID('all', {message: 'should be as UUID'})
     id: string = randomStringGenerator();
+
     @IsString({message: 'should be string'})
     @IsNotEmpty({message: 'should be not null'})
     title: string;
+
     @IsString({message: 'should be string'})
     @IsNotEmpty({message: 'should be not null'})
     message: string;
+
     @IsUUID('all', {message: 'should be as UUID'})
+    @IsNotEmpty({message: 'should be not null'})
     authorId: string
+
     @IsBoolean()
     @Exclude()
     published = false;
+
     @IsString()
     createdAt = new Date().toISOString();
+
     @IsString()
     updatedAt = new Date().toISOString();
 
