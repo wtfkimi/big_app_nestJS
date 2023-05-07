@@ -6,7 +6,7 @@ export abstract class PostRepository {
 
   abstract save(post: IPost): Promise<PostAggregate>
 
-  abstract findOn(id: string): Promise<PostAggregate | null>
+  abstract findOne(id: string): Promise<PostAggregate | null>
 
   abstract findAll(pagination: PaginationDto): Promise<[PostAggregate[], number]>; // need check if correct
 

@@ -13,7 +13,7 @@ export class DeletePostCommandHandler implements ICommandHandler<DeletePostComma
   }
 
   async execute({ id }: DeletePostCommand): Promise<boolean> {
-    const existPost = await this.postRepository.findOn(id).catch(err => {
+    const existPost = await this.postRepository.findOne(id).catch(err => {
       this.logger.error(err)
       return null as PostAggregate;
     })
@@ -23,7 +23,7 @@ export class DeletePostCommandHandler implements ICommandHandler<DeletePostComma
     const isPostDeleted = await this.postRepository.delete(id).catch(err => {
       throw new Error(err);
     })
-    return isPostDeleted;
+    return !!isPostDeleted;
   }
 
 }

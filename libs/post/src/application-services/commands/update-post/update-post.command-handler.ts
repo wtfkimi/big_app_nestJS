@@ -13,7 +13,7 @@ export class UpdatePostCommandHandler implements ICommandHandler<UpdatePostComma
 
   }
   async execute({ post }: UpdatePostCommand): Promise<PostAggregate> {
-    const existPost = await this.postRepository.findOn(post.id).catch(err => {
+    const existPost = await this.postRepository.findOne(post.id).catch(err => {
       this.logger.error(err)
       return null as PostAggregate;
     })

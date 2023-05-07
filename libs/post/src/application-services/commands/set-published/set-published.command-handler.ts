@@ -13,7 +13,7 @@ export class SetPublishedCommandHandler implements ICommandHandler<SetPublishedC
   constructor(private readonly postRepository: PostRepository) {
   }
   async execute({ id }: SetPublishedCommand): Promise<PostAggregate> {
-    const existPost = await this.postRepository.findOn(id).catch(err => {
+    const existPost = await this.postRepository.findOne(id).catch(err => {
       this.logger.error(err)
       return null as PostAggregate;
     })

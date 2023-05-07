@@ -13,7 +13,7 @@ export class GetPostQueryHandler implements IQueryHandler<GetPostQuery, PostAggr
   }
 
   async execute({ id }: GetPostQuery): Promise<PostAggregate | null> {
-    const existPost = await this.postRepository.findOn(id).catch(err => {
+    const existPost = await this.postRepository.findOne(id).catch(err => {
       this.logger.error(err);
       return null as PostAggregate;
     });
